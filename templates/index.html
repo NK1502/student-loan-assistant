@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Loan Repayment Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Student Loan Repayment Assistant (India)</h1>
+        <form method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="number" name="loan_amount" placeholder="Loan Amount (₹)" required>
+            <input type="number" name="loan_duration" placeholder="Loan Duration (Years)" required>
+            <input type="number" name="income" placeholder="Your Annual Income (₹)" required>
+            <input type="number" name="family_income" placeholder="Family Annual Income (₹)" required>
+            <input type="number" name="academic_score" placeholder="Academic Score (%)" required>
+            <input type="number" name="preferred_payment" placeholder="Preferred Monthly Payment (₹)">
+            <button type="submit">Get Strategies</button>
+        </form>
+
+        {% if strategy %}
+        <div class="results">
+            <h2>💡 Suggested Strategies:</h2>
+            <ul>
+                {% for item in strategy %}
+                <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
