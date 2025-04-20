@@ -2,31 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Student Loan Repayment Assistant</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Loan Repayment Assistance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>📚 Student Loan Repayment Assistant (India)</h1>
-        <form method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="number" name="loan_amount" placeholder="Loan Amount (₹)" required>
-            <input type="number" name="loan_duration" placeholder="Loan Duration (Years)" required>
-            <input type="number" name="income" placeholder="Your Annual Income (₹)" required>
-            <input type="number" name="family_income" placeholder="Family Annual Income (₹)" required>
-            <input type="number" name="academic_score" placeholder="Academic Score (%)" required>
-            <input type="number" name="preferred_payment" placeholder="Preferred Monthly Payment (₹)">
-            <button type="submit">Get Strategies</button>
+        <h1>Student Loan Repayment Assistance</h1>
+        <form method="POST" action="/">
+            <label for="loan_amount">Loan Amount (₹):</label>
+            <input type="number" name="loan_amount" id="loan_amount" required>
+
+            <label for="loan_duration">Loan Duration (Years):</label>
+            <input type="number" name="loan_duration" id="loan_duration" required>
+
+            <label for="income">Monthly Income (₹):</label>
+            <input type="number" name="income" id="income" required>
+
+            <label for="expenses">Monthly Expenses (₹):</label>
+            <input type="number" name="expenses" id="expenses" required>
+
+            <button type="submit">Get Repayment Strategy</button>
         </form>
 
         {% if strategy %}
-        <div class="results">
-            <h2>💡 Suggested Strategies:</h2>
-            <ul>
-                {% for item in strategy %}
-                <li>{{ item }}</li>
-                {% endfor %}
-            </ul>
+        <div class="strategy">
+            <h3>Suggested Repayment Strategy:</h3>
+            <p>{{ strategy }}</p>
         </div>
         {% endif %}
     </div>
